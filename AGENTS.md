@@ -1,4 +1,4 @@
-# 旗點 Flagpoint｜AI 協作規則
+# 旗點 Flagpoint｜專案開發規則
 
 這份文件是本專案的維護契約。開始工作前先讀本檔、`README.md`、一篇 `content/notes/*.json` 與 `templates/note.json`。所有規則適用整個 repository。
 
@@ -23,7 +23,6 @@ docs/               產生的公開網站；GitHub Pages 來源
 evidence/           實測結果與規則對照
 AGENTS.md           本規則
 README.md           使用、擴充、發布說明
-SUBMISSION.md       繳交文案；個人資料留待本人填寫
 ```
 
 `docs/` 是產物，禁止直接修文章或樣式；修改來源後執行 `npm run build`。產物須一併提交，確保 Pages 使用最新版本。不可引入框架、CDN、遠端字型或 npm 依賴，除非任務明確要求並同步更新文件。
@@ -80,4 +79,4 @@ SUBMISSION.md       繳交文案；個人資料留待本人填寫
 
 完成必須同時符合：資料驗證通過、Node 測試通過、建置可重現、所有站內連結及錨點存在、首頁能找到新文章、無 JS 可讀、桌機及窄版無關鍵遮擋。自動測試不代表已通過所有視覺或無障礙檢查，必須分別記錄。`evidence/verification.md` 記錄實際測試日期、命令、結果與限制，`evidence/rule-mapping.md` 說明規則對應實作。
 
-GitHub Pages 使用公開 repository 的 `main` 分支 `/docs` 目錄；建立與發布由使用者授權範圍決定，不要求使用者在聊天提供憑證。發布後檢查公開首頁、至少一篇文章及資源回應，再提供真實 URL。遇到登入或權限阻擋，完成本地成果並說明所需操作；不得寫成已上線。
+GitHub Pages 使用 `main` 分支的 `/docs` 目錄。發布前執行測試與建置，提交來源與更新後的產物；發布後檢查首頁、文章、導覽及共用資源。
