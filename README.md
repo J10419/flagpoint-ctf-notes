@@ -8,13 +8,15 @@
 
 ## 發布狀態與入口
 
-公開 repository 已確認，完整專案正在上傳；GitHub Pages 尚待發布驗證，網站標記不能當成已上線連結：
+公開 repository 與 GitHub Pages 已於 2026-11-05 驗證。首頁、三篇文章與所有共用資源均回應 HTTP 200。
 
-- Repository：`https://github.com/J10419/flagpoint-ctf-notes`
-- 網站：`PENDING_SITE_URL`
+- Repository：[J10419/flagpoint-ctf-notes](https://github.com/J10419/flagpoint-ctf-notes)
+- 網站：[旗點 CTF 初學者筆記站](https://j10419.github.io/flagpoint-ctf-notes/)
 - 實際驗證紀錄：[evidence/verification.md](evidence/verification.md)
 - 規則與實作對照：[evidence/rule-mapping.md](evidence/rule-mapping.md)
 - 作業繳交文案：[SUBMISSION.md](SUBMISSION.md)
+
+![公開網站桌機版](evidence/home-desktop.jpg)
 
 ## 網站內容
 
@@ -40,7 +42,7 @@ npm run build
 npm run serve
 ```
 
-開啟 <http://localhost:4173>。預覽結束時，在啟動預覽的終端機按 `Ctrl+C`。
+開啟 <http://127.0.0.1:4173>。預覽結束時，在啟動預覽的終端機按 `Ctrl+C`。
 
 `docs/index.html` 可以直接開啟閱讀，但瀏覽器可能限制 `file://` 下的 JavaScript module。要操作完整互動功能，請使用本機 HTTP 預覽或已發布的網站。
 

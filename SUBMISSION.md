@@ -1,6 +1,6 @@
 # [學校] [學號] [系級] [姓名] 旗點：CTF 初學者筆記站
 
-> 繳交前請將標題中的四個方括號欄位改為本人資料。截止時間：2026/11/16 23:59（UTC+8）；遲交期限：2026/11/17 16:00（UTC+8）。目前公開連結待發布驗證，下列標記不可直接當成正式連結繳交。
+> 繳交前請將標題中的四個方括號欄位改為本人資料。截止時間：2026/11/16 23:59（UTC+8）；遲交期限：2026/11/17 16:00（UTC+8）。公開連結已於 2026/11/05 驗證。
 
 ## 1. 專案簡介
 
@@ -10,21 +10,21 @@
 
 ## 2. GitHub Repository
 
-https://github.com/J10419/flagpoint-ctf-notes
+[開啟 GitHub Repository](https://github.com/J10419/flagpoint-ctf-notes)
 
-狀態：公開 repository 已確認，完整專案正在上傳。完整原始碼、文章資料、範本、README、測試與規則文件一併納入專案。
+狀態：公開 repository 已建立，完整專案已上傳。完整原始碼、文章資料、範本、README、測試與規則文件一併納入專案。
 
 ## 3. 網頁連結
 
-PENDING_SITE_URL
+[開啟公開網站](https://j10419.github.io/flagpoint-ctf-notes/)
 
-狀態：待 GitHub Pages 發布及公開網址驗證。發布來源設定為 `main` 分支的 `/docs` 目錄。
+狀態：GitHub Pages 已發布，公開首頁、三篇文章及共用資源均回應 HTTP 200。發布來源設定為 `main` 分支的 `/docs` 目錄。
 
 ## 4. AGENTS.md
 
 規則文件：[AGENTS.md](AGENTS.md)
 
-GitHub 規則文件連結：https://github.com/J10419/flagpoint-ctf-notes/blob/main/AGENTS.md
+GitHub 規則文件：[AGENTS.md](https://github.com/J10419/flagpoint-ctf-notes/blob/main/AGENTS.md)
 
 文件具體定義了專案目的、繁體中文寫作方式、目錄結構、檔案命名、文章欄位與章節順序、共用視覺風格、無障礙要求、來源引用、AI 修改邊界、測試流程與發布完成標準。
 

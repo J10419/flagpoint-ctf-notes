@@ -137,19 +137,27 @@ test('同樣的來源建置兩次得到完全相同的網站', async t => {
   assert.deepEqual(snapshot(first), snapshot(second));
 });
 
-test('只新增一份範本內容，即自動新增首頁項目與獨立文章', async t => {
+test('範本可重複擴充，新增資料會自動新增首頁項目與獨立文章', async t => {
   const folder = temporary(t);
   const extendedContent = join(folder, 'content');
   cpSync(contentDir, extendedContent, { recursive: true });
-  const template = JSON.parse(readFileSync(templatePath, 'utf8'));
-  assert.ok(!notes.some(note => note.slug === template.slug || note.order === template.order));
-  writeFileSync(join(extendedContent, `${template.slug}.json`), `${JSON.stringify(template, null, 2)}\n`);
   const outDir = join(folder, 'site');
-  const result = await build({ root, outDir, contentDir: extendedContent });
-  assert.equal(result.notes.length, notes.length + 1);
-  assert.ok(readFileSync(join(outDir, 'index.html'), 'utf8').includes(`notes/${template.slug}.html`));
-  assert.ok(existsSync(join(outDir, 'notes', `${template.slug}.html`)));
-  assertLocalLinks(outDir);
+  // Exercise the documented workflow again after the example slug already exists.
+  // Test fixtures must never reserve a production slug or order forever.
+  for (let addition = 1; addition <= 2; addition++) {
+    const current = loadNotes(extendedContent);
+    const template = JSON.parse(readFileSync(templatePath, 'utf8'));
+    const baseSlug = template.slug;
+    let suffix = 1;
+    while (current.some(note => note.slug === template.slug)) template.slug = `${baseSlug}-example-${suffix++}`;
+    if (current.some(note => note.order === template.order)) template.order = Math.max(...current.map(note => note.order)) + 10;
+    writeFileSync(join(extendedContent, `${template.slug}.json`), `${JSON.stringify(template, null, 2)}\n`);
+    const result = await build({ root, outDir, contentDir: extendedContent });
+    assert.equal(result.notes.length, notes.length + addition);
+    assert.ok(readFileSync(join(outDir, 'index.html'), 'utf8').includes(`notes/${template.slug}.html`));
+    assert.ok(existsSync(join(outDir, 'notes', `${template.slug}.html`)));
+    assertLocalLinks(outDir);
+  }
 });
 
 test('文章文字與屬性中像 HTML 的內容會被跳脫', async t => {
