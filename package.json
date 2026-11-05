@@ -1,0 +1,13 @@
+{
+  "name": "flagpoint-ctf-notes",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "旗點：可由 AGENTS.md 持續擴充的繁體中文 CTF 初學者筆記站",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test",
+    "serve": "node scripts/serve.mjs"
+  }
+}

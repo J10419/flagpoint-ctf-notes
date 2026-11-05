@@ -1,0 +1,63 @@
+{
+  "slug": "first-flag",
+  "title": "CTF 第一面旗：從讀題開始",
+  "summary": "先讀懂任務、找出線索，再把解題過程寫成可以重做的筆記。從一張原創練習卡開始，不需要安裝工具。",
+  "category": "start",
+  "difficulty": "入門",
+  "minutes": 5,
+  "order": 10,
+  "updated": "2026-11-05",
+  "prerequisites": ["會使用瀏覽器與複製文字即可。"],
+  "objectives": ["說出 flag 在本練習中的用途。", "依照指定格式擷取完整答案。", "用觀察、嘗試與結果記錄一次解題。"],
+  "sections": [
+    {
+      "id": "overview",
+      "title": "先知道自己要找什麼",
+      "blocks": [
+        {"type": "paragraph", "text": "CTF 是 Capture the Flag 的縮寫。入門解題式 CTF 通常把知識拆成小挑戰，完成後取得一段用來驗證結果的字串，稱為旗標（flag）。本篇先練習讀題與比對格式。"},
+        {"type": "callout", "title": "本地示範", "text": "本頁練習卡與 flag 都是本專案原創的虛構教材，不是其他競賽的題目或答案。只需閱讀本頁，不需操作外部服務。"}
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "把任務拆成三個問題",
+      "blocks": [
+        {"type": "paragraph", "text": "不同活動的 flag 格式可能不同，必須先讀題目規則。旗點的教材統一使用 flag{...}，但這不是所有 CTF 的通用標準。"},
+        {"type": "list", "items": ["給了什麼？先列出題目提供的文字、檔案或畫面。", "要找什麼？確認答案格式與任務要求。", "看到什麼？用具體線索決定下一步，而不是先猜工具。"]}
+      ]
+    },
+    {
+      "id": "walkthrough",
+      "title": "演練：讀出一張練習卡",
+      "blocks": [
+        {"type": "paragraph", "text": "輸入是下方練習卡。用途是比對指定格式；預期找出的完整字串為 flag{read_before_tools}。"},
+        {"type": "code", "language": "text", "text": "任務：從卡片找出符合 flag{...} 格式的字串。\n備註：不要只交大括號裡面的內容。\n線索：flag{read_before_tools}"},
+        {"type": "list", "items": ["先確認開頭是小寫 flag{，結尾是右大括號。", "定位完整字串 flag{read_before_tools}。", "比對大小寫、底線與括號，避免多貼空格。", "記錄：我依題目的格式要求辨識答案，不需要猜密碼。"]},
+        {"type": "callout", "title": "留下一份可重做的筆記", "text": "觀察：題目指定 flag{...}。嘗試：逐一比對卡片文字。結果：找到 flag{read_before_tools}。下次可以沿用這個記錄方式。"}
+      ]
+    },
+    {
+      "id": "pitfalls",
+      "title": "常見誤區",
+      "blocks": [
+        {"type": "list", "items": ["把 flag 當成固定密碼：它是題目驗證成果的字串，格式依活動而定。", "只複製 read_before_tools：本題要求連同 flag 與大括號提交。", "只留下答案：觀察與推理過程才是之後能重複使用的部分。"]}
+      ]
+    }
+  ],
+  "practice": {
+    "prompt": "以下哪一段符合本題指定的 flag{...} 格式？FLAG(read)、flag{observe_first}、observe_first。",
+    "hint": "逐一比對開頭的大小寫、括號種類與結尾。",
+    "answer": "flag{observe_first}",
+    "explanation": "它保留小寫 flag 與左右大括號，符合本題要求。這個答案是教材示範字串。"
+  },
+  "quiz": {
+    "question": "拿到一份陌生 CTF 題目時，最合理的第一步是什麼？",
+    "options": ["先讀題目，確認資料與答案格式。", "對任意網站執行掃描。", "直接猜一組密碼。"],
+    "answer": 0,
+    "explanation": "先確定任務與線索，才能選擇適合的操作。本練習只需閱讀題目文字。"
+  },
+  "references": [
+    {"title": "CMU：picoCTF 教育計畫介紹", "url": "https://www.cs.cmu.edu/outreach/programs/pico-ctf"},
+    {"title": "picoCTF 官方入口：CyLab Security Academy 遷移公告", "url": "https://picoctf.org/"}
+  ]
+}

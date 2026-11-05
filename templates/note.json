@@ -1,0 +1,62 @@
+{
+  "slug": "url-encoding",
+  "title": "URL 編碼：讀懂百分比後的線索",
+  "summary": "用一段原創示範字串認識百分比編碼，練習還原 URL 元件中的資料，並理解它與加密的差別。",
+  "category": "encoding",
+  "difficulty": "入門",
+  "minutes": 5,
+  "order": 40,
+  "updated": "2026-11-05",
+  "prerequisites": ["知道編碼是在改變資料的表示方式。"],
+  "objectives": ["認出百分比編碼中的百分號與兩位十六進位數字。", "在本地還原一段 URL 元件示例。"],
+  "sections": [
+    {
+      "id": "overview",
+      "title": "網址裡的百分號在說什麼",
+      "blocks": [
+        {"type": "paragraph", "text": "百分比編碼（percent-encoding）也常稱 URL 編碼，以百分號加上兩位十六進位數字表示一個位元組。它讓資料在 URL 元件中具有明確表示，不提供保密性。"},
+        {"type": "callout", "title": "本地示範", "text": "本篇是可複製的完整文章範本。字串與 flag 是原創虛構教材，不需向外部網站發送請求。"}
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "先看元件，再做還原",
+      "blocks": [
+        {"type": "paragraph", "text": "例如 %20 可以表示空格，%7B 與 %7D 分別表示左右大括號。JavaScript 的 decodeURIComponent 可以還原編碼後的 URL 元件。"},
+        {"type": "paragraph", "text": "URL 中的分隔符號具有用途。處理一個參數值與處理整段網址並不相同；本篇只還原單一資料字串。"}
+      ]
+    },
+    {
+      "id": "walkthrough",
+      "title": "演練：還原一段元件",
+      "blocks": [
+        {"type": "paragraph", "text": "輸入 flag%7Burl_clue%7D，透過 Node.js 或瀏覽器開發者工具執行下方程式，用途是還原元件中的大括號。預期輸出為 flag{url_clue}。"},
+        {"type": "code", "language": "javascript", "text": "decodeURIComponent('flag%7Burl_clue%7D')\n// 預期輸出：flag{url_clue}"},
+        {"type": "list", "items": ["定位 %7B 與 %7D，觀察每個百分號後的兩位十六進位數字。", "執行示例並比對預期輸出。", "記下：還原只使用公開規則，沒有秘密金鑰。"]}
+      ]
+    },
+    {
+      "id": "pitfalls",
+      "title": "常見誤區",
+      "blocks": [
+        {"type": "list", "items": ["把百分比編碼當成加密：它只是另一種表示方式。", "認為加號永遠代表空格：這與使用情境有關，decodeURIComponent 不會自動把加號改成空格。", "忽略格式錯誤：百分號後若沒有合法的兩位十六進位數字，decodeURIComponent 可能拋出 URIError。"]}
+      ]
+    }
+  ],
+  "practice": {
+    "prompt": "使用相同方法還原 flag%7Bsmall_steps%7D。",
+    "hint": "保留原字串，只讓 decodeURIComponent 處理百分比編碼。",
+    "answer": "flag{small_steps}",
+    "explanation": "%7B 與 %7D 被還原成左右大括號，其餘文字保持相同。"
+  },
+  "quiz": {
+    "question": "百分比編碼的 %20 在本示例中代表什麼？",
+    "options": ["一個空格。", "二十個字元。", "一把秘密金鑰。"],
+    "answer": 0,
+    "explanation": "20 是空格位元組值的十六進位表示；百分比編碼不提供秘密金鑰。"
+  },
+  "references": [
+    {"title": "MDN：Percent-encoding", "url": "https://developer.mozilla.org/en-US/docs/Glossary/Percent-encoding"},
+    {"title": "MDN：decodeURIComponent()", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent"}
+  ]
+}

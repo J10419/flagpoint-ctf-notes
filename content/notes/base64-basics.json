@@ -1,0 +1,64 @@
+{
+  "slug": "base64-basics",
+  "title": "Base64 不是加密",
+  "summary": "將看似亂碼的文字還原，理解編碼如何改變表示方式。用瀏覽器內的小實驗，找出一面原創示範旗標。",
+  "category": "encoding",
+  "difficulty": "入門",
+  "minutes": 7,
+  "order": 20,
+  "updated": "2026-11-05",
+  "prerequisites": ["完成第一面旗，知道本教材使用 flag{...} 格式。"],
+  "objectives": ["區分編碼與加密的目的。", "解碼一段標準 Base64 教學資料。", "說明結尾等號只能作為線索，不能證明資料一定是 Base64。"],
+  "sections": [
+    {
+      "id": "overview",
+      "title": "看不懂，不代表被加密",
+      "blocks": [
+        {"type": "paragraph", "text": "遇到一段陌生字串時，先觀察它的表示方式。Base64 是編碼（encoding），可以把位元組表示成文字；本身不提供保密性，也不需要秘密金鑰。"},
+        {"type": "callout", "title": "本地示範", "text": "本篇兩段旗標是本專案原創的虛構教材。練習只處理這些文字，解碼結果不會送到伺服器。"}
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "編碼是在改變表示方式",
+      "blocks": [
+        {"type": "paragraph", "text": "標準 Base64 使用英文字母、數字、加號與斜線表示資料，結尾可能有填補字元（padding）等號。它讓二進位資料更方便放進需要文字的環境。"},
+        {"type": "paragraph", "text": "編碼後再解碼，是依公開規則還原原本的位元組；這與使用金鑰提供機密性的加密（encryption）不同。解碼結果也不保證一定是可閱讀的文字。"}
+      ]
+    },
+    {
+      "id": "walkthrough",
+      "title": "演練：還原第一個線索",
+      "blocks": [
+        {"type": "paragraph", "text": "將下方字串作為 Base64 解碼輸入。用途是把文字表示還原；預期輸出為 flag{first_step}。"},
+        {"type": "code", "language": "text", "text": "ZmxhZ3tmaXJzdF9zdGVwfQ=="},
+        {"type": "list", "items": ["觀察字元與結尾兩個等號，把 Base64 列為候選解釋。", "將整段貼入本頁實驗區並選擇解碼。", "檢查結果是否符合題意，而不是只因工具沒有報錯就認定成功。", "預期得到 flag{first_step}，再記下輸入、方法與結果。"]},
+        {"type": "paragraph", "text": "若已安裝 Node.js，也能在本地執行下方示例。輸入相同字串，輸出同一個示範 flag；這段程式用來核對結果，不是嚴格格式驗證器。"},
+        {"type": "code", "language": "javascript", "text": "Buffer.from('ZmxhZ3tmaXJzdF9zdGVwfQ==', 'base64').toString('utf8')\n// 預期輸出：flag{first_step}"}
+      ]
+    },
+    {
+      "id": "pitfalls",
+      "title": "常見誤區",
+      "blocks": [
+        {"type": "list", "items": ["看不懂就是加密：表示方式改變，不代表有保密性。", "Base64 一定有等號：是否出現填補取決於資料長度及使用規格。", "有等號就一定是 Base64：還要檢查字母表、格式與解碼結果。", "Base64 與 Base64url 完全相同：兩者字母表有差異，本頁實驗處理標準 Base64。"]}
+      ]
+    }
+  ],
+  "practice": {
+    "prompt": "解碼 ZmxhZ3trZWVwX25vdGVzfQ==，並用一句話說明為什麼這不是破解加密。",
+    "hint": "沿用演練的流程，觀察還原過程是否需要秘密金鑰。",
+    "answer": "flag{keep_notes}",
+    "explanation": "還原依據公開的編碼規則，不需要秘密金鑰。這是解碼，不是破解加密。"
+  },
+  "quiz": {
+    "question": "將密碼轉成 Base64 後公開，能提供保密性嗎？",
+    "options": ["可以，因為肉眼看不懂。", "不可以，任何人都能依編碼規則還原。", "可以，只要刪除結尾的等號。"],
+    "answer": 1,
+    "explanation": "Base64 是資料表示方法；移除填補字元也不會讓它變成加密。"
+  },
+  "references": [
+    {"title": "RFC 4648：Base64 編碼、填補、URL 變體與安全考量", "url": "https://www.rfc-editor.org/rfc/rfc4648"}
+  ],
+  "lab": "base64"
+}

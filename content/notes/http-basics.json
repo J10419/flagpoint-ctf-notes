@@ -1,0 +1,64 @@
+{
+  "slug": "http-basics",
+  "title": "HTTP 請求與回應：讀懂網頁對話",
+  "summary": "用一組虛構 HTTP/1.1 訊息，認出方法、路徑、狀態碼、標頭與本文，為 Web 題型建立觀察基礎。",
+  "category": "web",
+  "difficulty": "入門",
+  "minutes": 8,
+  "order": 30,
+  "updated": "2026-11-05",
+  "prerequisites": ["知道瀏覽器會向伺服器取得網頁。"],
+  "objectives": ["分辨用戶端的請求與伺服器的回應。", "在範例中定位路徑、狀態碼、標頭與本文。", "避免把 200 OK 解讀成網站一定安全。"],
+  "sections": [
+    {
+      "id": "overview",
+      "title": "網頁背後是一來一往的訊息",
+      "blocks": [
+        {"type": "paragraph", "text": "瀏覽器送出請求（request），伺服器回傳回應（response）。讀懂這兩種訊息，有助於辨識網頁在要求什麼，以及實際收到什麼。"},
+        {"type": "callout", "title": "本地示範", "text": "下方是本專案原創的 HTTP/1.1 虛構對話，不會向 example.test 發送請求。HTTP/2、HTTP/3 的傳輸表示不同，不可把這段文字當成所有版本的網路原始格式。"}
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "先認出四個位置",
+      "blocks": [
+        {"type": "list", "items": ["請求第一行：方法描述意圖，路徑指出要取得的資源。", "回應第一行：狀態碼說明處理結果。", "標頭（headers）：描述訊息與內容的資訊。", "本文（body）：放實際內容；是否存在取決於訊息條件。"]},
+        {"type": "paragraph", "text": "在 HTTP/1.1 文字表示中，標頭之後的空白行是重要分隔。不要只看畫面上的本文，也要留意標頭提供的資訊。"}
+      ]
+    },
+    {
+      "id": "walkthrough",
+      "title": "演練：拆解一次 GET",
+      "blocks": [
+        {"type": "paragraph", "text": "將下方請求當作閱讀輸入，找出方法與路徑；預期答案為 GET 與 /practice。這是文字辨識示例，不需實際連線。"},
+        {"type": "code", "language": "http", "text": "GET /practice HTTP/1.1\nHost: example.test\nAccept: text/plain\n\n"},
+        {"type": "paragraph", "text": "下方是對應的虛構回應。預期讀出狀態碼 200、純文字內容型別與本文 flag{read_headers}。本文共 18 個 ASCII 位元組，不含結尾換行。"},
+        {"type": "code", "language": "http", "text": "HTTP/1.1 200 OK\nContent-Type: text/plain; charset=utf-8\nContent-Length: 18\n\nflag{read_headers}"},
+        {"type": "list", "items": ["從 GET 讀出用戶端希望取得資源。", "從 /practice 讀出路徑，從 Host 讀出本範例的主機。", "從 200 讀出成功回應，從 Content-Type 讀出內容型別。", "找到標頭後的空白行，確認後方的 flag{read_headers} 是本文。"]}
+      ]
+    },
+    {
+      "id": "pitfalls",
+      "title": "常見誤區",
+      "blocks": [
+        {"type": "list", "items": ["200 表示網站沒有漏洞：它表示這次請求成功，不是安全檢查結果。", "所有回應一定有本文：是否有本文與方法、狀態碼等條件有關。", "畫面上的內容就是全部回應：標頭也包含資訊，可從瀏覽器開發者工具的 Network 面板觀察自己載入的頁面。"]}
+      ]
+    }
+  ],
+  "practice": {
+    "prompt": "在上面的虛構對話中，請求路徑、回應狀態碼與回應內容型別各是什麼？",
+    "hint": "分別看請求第一行、回應第一行與 Content-Type。",
+    "answer": "/practice；200；text/plain; charset=utf-8",
+    "explanation": "這三個值分屬請求目標、處理結果與本文的型別資訊。不要把標頭與本文混在一起。"
+  },
+  "quiz": {
+    "question": "HTTP/1.1 文字訊息中，標頭與本文以什麼分隔？",
+    "options": ["一個空白行。", "一個 JSON 大括號。", "200 OK 這段文字。"],
+    "answer": 0,
+    "explanation": "標頭區結束後的空白行是結構分隔；訊息也可能沒有本文。"
+  },
+  "references": [
+    {"title": "MDN：Overview of HTTP", "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview"},
+    {"title": "MDN：HTTP messages", "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Messages"}
+  ]
+}
